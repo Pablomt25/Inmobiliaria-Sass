@@ -1,0 +1,82 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+/// Estilos para la sección de pie de página.
+.footer {
+    background-color: v.$primario;
+    margin-top: 5rem;
+    padding-top: 5rem;
+
+    /// Grid para organizar los elementos del pie de página en tablet.
+    &__grid {
+        @include m.tablet {
+            @include m.grid(3, 2rem);
+        }
+    }
+
+    /// Caja para organizar los elementos en el pie de página.
+    &__box {
+        margin-bottom: 5rem;
+
+        @include m.tablet {
+            margin-bottom: 0;
+        }
+    }
+
+    /// Encabezado del pie de página.
+    &__heading {
+        color: v.$blanco;
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+
+    /// Texto del pie de página.
+    &__texto {
+        color: v.$blanco;
+    }
+
+    /// Imagen del pie de página.
+    &__imagen {
+        max-width: 30rem;
+        margin: 0 auto;
+
+        @include m.tablet {
+            max-width: 100%;
+            margin-top: 15%;
+        }
+    }
+
+    /// Navegación en columna para dispositivos móviles.
+    &__navegacion {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /// Enlaces del pie de página.
+    &__link {
+        max-width: max-content;
+        color: v.$blanco;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        transition: transform .2s;
+
+        /// Ajuste de último enlace sin margen inferior.
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /// Efecto de escala al pasar el mouse sobre los enlaces.
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
+
+    /// Derechos de autor y fondo del pie de página.
+    &__copyright {
+        background-color: darken(v.$primario, 10%);
+        text-align: center;
+        color: v.$blanco;
+        margin: 5rem 0 0 0;
+        padding: 1rem;
+    }
+}

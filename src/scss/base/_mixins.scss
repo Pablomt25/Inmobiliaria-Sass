@@ -1,0 +1,102 @@
+@use 'variables' as v; 
+
+/// Mixin para aplicar estilos específicos para teléfonos.
+/// @mixin telefono
+/// @param {content} Estilos a aplicar dentro del media query.
+@mixin telefono {
+    @media (min-width: v.$telefono) {
+        @content;
+    }
+}
+
+/// Mixin para aplicar estilos específicos para tablets.
+/// @mixin tablet
+/// @param {content} Estilos a aplicar dentro del media query.
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+/// Mixin para aplicar estilos específicos para desktop.
+/// @mixin desktop
+/// @param {content} Estilos a aplicar dentro del media query.
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+/// Mixin para aplicar estilos específicos para desktop XL.
+/// @mixin desktopXL
+/// @param {content} Estilos a aplicar dentro del media query.
+@mixin desktopXL {
+    @media (min-width: v.$desktopxl) {
+        @content;
+    }
+}
+
+/// Mixin para estilos de botón.
+/// @mixin boton
+/// @param {bgColor} Color de fondo del botón.
+/// @param {colorTexto} Color del texto del botón.
+@mixin boton($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 1.5rem 4rem;
+    color: $colorTexto;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+
+    /// Aplicar estilos adicionales para tablets.
+    @include tablet {
+        width: auto;
+    }
+
+    /// Estilos al pasar el ratón sobre el botón.
+    &:hover {
+        background-color: darken( $bgColor, 10% );
+    }
+}
+
+/// Mixin para estilos de cuadrícula.
+/// @mixin grid
+/// @param {columnas} Número de columnas en la cuadrícula.
+/// @param {espaciado} Espaciado entre las celdas de la cuadrícula.
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+/// Mixin para estilos de encabezado.
+/// @mixin heading
+/// @param {salto} (Opcional) Indica si debe haber un salto de línea después del encabezado.
+@mixin heading($salto: false) {
+    font-weight: 400;
+
+    /// Estilos para el elemento 'span' dentro del encabezado.
+    span {
+        font-weight: 700;
+
+        @if($salto) {
+            display: block;
+        }
+    }
+
+    /// Pseudo-elemento '::after' para estilos adicionales después del encabezado.
+    &::after {
+        content: '';
+        display: block;
+        height: 1rem;
+        width: 15rem;
+        margin-top: 1rem;
+        background-image: linear-gradient(to right, v.$primario 0%, v.$primario 50%, lighten(v.$primario, 20%) 50%, lighten(v.$primario, 20%) 100% );
+    }
+}

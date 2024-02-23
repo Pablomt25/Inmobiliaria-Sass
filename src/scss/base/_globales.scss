@@ -1,0 +1,43 @@
+@use 'variables' as v; 
+
+/// Configuración del tamaño base de la fuente y otros estilos para el HTML.
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/// Heredar el box-sizing para todos los elementos.
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/// Estilos generales del cuerpo del documento.
+body {
+    /// Utilizar la fuente principal definida en el módulo 'variables'.
+    font-family: v.$fuentePrincipal;
+    font-size: 1.6rem;
+    /// Aplicar un fondo ligeramente oscurecido usando la variable definida.
+    background-color: darken(v.$grisClaro, 3%);
+    overflow-x: hidden;
+}
+
+/// Contenedor principal con ancho del 95%, máximo de 1200px y centrado.
+.contenedor {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/// Estilos para imágenes, con ancho máximo del 100%.
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/// Estilos para listas desordenadas, eliminando el margen y el padding.
+ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}

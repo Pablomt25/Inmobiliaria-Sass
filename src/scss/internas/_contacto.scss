@@ -1,0 +1,74 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+/// Estilos para la sección de contacto.
+.contacto {
+    /// Encabezado de la sección de contacto.
+    &__heading {
+        @include m.heading;
+        margin: 5rem 0;
+    }
+
+    /// Contenido de la sección de contacto.
+    &__contenido {
+        @include m.tablet {
+            @include m.grid(5, 2rem);
+            grid-template-rows: auto 1fr;
+        }
+    }
+
+    /// Imagen en la sección de contacto.
+    &__imagen {
+        grid-column: 1/7;
+    }
+
+    /// Imagen específica en la sección de contacto.
+    &__img {
+        width: 100%;
+        max-height: 30rem;
+        object-fit: cover;
+    }
+}
+
+/// Estilos para el formulario.
+.formulario {
+    background-color: v.$primario;
+    position: relative;
+    margin: -5rem 0 0;
+    padding: 2rem;
+
+    @include m.tablet {
+        grid-column: 2/5;
+        grid-row: 2/3;
+    }
+
+    /// Campo en el formulario.
+    &__campo {
+        margin: 1rem 0 2rem;
+        @include m.tablet {
+            display: flex;
+        }
+    }
+
+    /// Etiqueta del campo en el formulario.
+    &__label {
+        display: block;
+        font-weight: bold;
+        color: v.$blanco;
+        margin-bottom: 1rem;
+        @include m.tablet {
+            flex-basis: 15rem;
+        }
+    }
+
+    /// Entrada de texto en el formulario.
+    &__input {
+        width: 100%;
+        padding: 1rem;
+
+        /// Estilos específicos para el campo de mensaje.
+        &--mensaje {
+            height: 20rem;
+        }
+    }
+}

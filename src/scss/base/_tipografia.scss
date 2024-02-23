@@ -1,0 +1,43 @@
+@use 'base/variables' as v;
+
+
+/// Estilos comunes para encabezados h1, h2 y h3.
+h1, h2, h3 {
+    margin: 0;
+    line-height: 1.2;
+}
+
+/// Estilos específicos para h1.
+h1 {
+    font-size: 4.4rem;
+    font-family: v.$fuenteSecundaria;
+}
+
+/// Estilos específicos para h2.
+h2 {
+    font-size: 4rem;
+    font-family: v.$fuenteSecundaria;
+}
+
+/// Estilos específicos para h3.
+h3 {
+    font-size: 3rem;
+}
+
+/// Estilos comunes para elementos con clase que terminan en "heading".
+[class$="heading"] {
+    margin: 2rem 0;
+}
+
+/// Estilos para enlaces.
+a {
+    text-decoration: none;
+    color: v.$negro;
+}
+
+/// Estilos para párrafos.
+p {
+    color: v.$negro;
+    font-size: 1.6rem;
+    line-height: 1.8;
+}

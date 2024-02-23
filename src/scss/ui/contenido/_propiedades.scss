@@ -1,0 +1,87 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+/// Estilos para la sección de propiedades.
+.propiedades {
+    margin-top: 5rem;
+
+    @include m.tablet {
+        margin-top: 10rem;
+    }
+
+    /// Encabezado de la sección de propiedades.
+    &__heading {
+        @include m.heading;
+
+        /// Modificador para encabezados internos en la sección de propiedades.
+        &--internas {
+            margin: 5rem 0;
+        }
+    }
+
+    /// Grid para la sección de propiedades.
+    &__grid {
+        @include m.grid(1, 2rem);
+
+        @include m.tablet {
+            @include m.grid(3, 2rem);
+        }
+    }
+}
+
+/// Estilos para cada propiedad individual.
+.propiedad {
+    background-color: v.$blanco;
+
+    /// Imagen de la propiedad.
+    &__imagen {
+        // Nueva propiedad CSS, mantiene una relación de aspecto de 10:6.
+        aspect-ratio: 10 / 6;
+        background-size: auto 150%;
+        position: relative;
+
+        // Itera para agregar múltiples imágenes con un solo código.
+        @for $i from 1 through 6 {
+            $imagen: '../img/propiedad_' + $i + '.jpg';
+            &:nth-child(#{$i}) &__imagen {
+                background-image: linear-gradient(to bottom, transparentize(v.$negro, 1%) 0%, transparentize(v.$negro, .15%) 100%), url($imagen);
+            }
+        }
+
+        &:nth-child(6) &__imagen {
+            background-size: auto 180%;
+        }
+    }
+
+    /// Nombre de la propiedad.
+    &__nombre {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        color: v.$blanco;
+        font-size: 2.4rem;
+    }
+
+    /// Contenido de la propiedad.
+    &__contenido {
+        padding: 2rem;
+
+        /// Texto de la propiedad.
+        &__texto {
+            margin-bottom: 0;
+        }
+
+        /// Precio de la propiedad.
+        &__precio {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        /// Enlace de la propiedad.
+        &__enlace {
+            @include m.boton(v.$primario, v.$blanco);
+            display: block;
+            text-transform: uppercase;
+        }
+    }
+}

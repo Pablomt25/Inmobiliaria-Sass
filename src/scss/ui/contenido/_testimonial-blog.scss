@@ -1,0 +1,109 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.testimoniales-blog {
+    margin-top: 5rem;
+
+    @include m.desktop {
+        @include m.grid(3, 4rem);
+    }
+
+    /// Sección del blog dentro de la sección de testimonios y blogs.
+    &__blog {
+        @include m.desktop {
+            grid-column: 2/4;
+        }
+    }
+
+    /// Encabezado de la sección de testimonios y blogs.
+    &__heading {
+        @include m.heading(true);
+        margin-bottom: 5rem;
+    }
+}
+
+/// Estilos para cada testimonio individual.
+.testimonial {
+    text-align: center;
+
+    /// Imagen del testimonio.
+    &__imagen {
+        width: 20rem;
+        margin: 0 auto;
+    }
+
+    /// Contenido del testimonio.
+    &__contenido {
+        background-color: v.$blanco;
+        margin-top: -10rem;
+        padding: 10rem 2rem 2rem 2rem;
+    }
+
+    /// Nombre del autor del testimonio.
+    &__nombre {
+        font-size: 2.4rem;
+        font-weight: 700;
+    }
+
+    /// Texto del testimonio con cita previa.
+    &__texto {
+        &::before {
+            content: '';
+            background-image: url(../img/quote.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 1rem;
+            display: inline-block;
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+}
+
+/// Estilos para cada entrada de blog individual.
+.entrada {
+    background-color: v.$blanco;
+    margin-bottom: 2rem;
+
+    @include m.tablet {
+        @include m.grid(5, 2rem);
+        align-items: center;
+    }
+
+    /// Contenedor de la imagen de la entrada.
+    &__imagen-contenedor {
+        @include m.tablet {
+            grid-column: 1/3;
+        }
+    }
+
+    /// Imagen de la entrada del blog.
+    &__imagen {
+        height: 30rem;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /// Contenido de la entrada del blog.
+    &__contenido {
+        padding: 1rem;
+        @include m.tablet {
+            grid-column: 3/6;
+        }
+    }
+
+    /// Meta información de la entrada del blog.
+    &__meta {
+        font-size: 1.4rem;
+    }
+
+    /// Enlace de la entrada del blog.
+    &__enlace {
+        @include m.boton(v.$primario, v.$blanco);
+        display: block;
+        
+        @include m.tablet {
+            display: inline-block;
+        }
+    }
+}
